@@ -1,0 +1,8 @@
+$h : 100vh;
+$w : 100vw;
+.app{
+     height: $h;
+    width: $w;
+    display: grid;
+    grid-template-rows: 80px auto;
+}
