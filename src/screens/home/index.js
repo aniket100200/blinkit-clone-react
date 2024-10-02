@@ -3,24 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/thunk";
 import Product from "../components/Product";
 import "./styles/products.scss";
+import Loader from "../../components/comp/loading/Loader";
 
 
 const HomeScreen = ()=>{
     const dispatch = useDispatch();
-    const count = useSelector(s => s.count);
-    const products = useSelector(s=> s.products);
+    const count = useSelector(s => s.x.count);
+    const products = useSelector(s=> s.x.products);
+    const search = useSelector(s=>s.x.search);
   
     useEffect(()=>{
         dispatch(fetchProducts); //whenever component is mounted
 
     },[]);
 
-    console.log({products});
-    if(!products)return <h1>Loading....</h1>
+   
+    if(!products)return <Loader/>;
+  
     
     return <div className="products-list">
         {
-            products.map(product=> <Product key={product?.id} data={product}/>)
+            products.filter(p=>{
+               return p.title.toLowerCase().includes(search?.toLowerCase()) || p.description.toLowerCase().includes(search?.toLowerCase());
+            }).map(product=> <Product key={product?.id} data={product}/>)
         }
     </div>
 }

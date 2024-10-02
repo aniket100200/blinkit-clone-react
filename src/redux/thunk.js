@@ -7,7 +7,7 @@ const delay = (ms)=>{
 } 
 
 
-export async function fetchProducts(dispatch) {
+export async function fetchProducts(dispatch, getState) {
     try{
         const response = await axios('https://fakestoreapi.com/products');
         dispatch({type : actions.PRODUCT_SUCCESS,payload : response.data})

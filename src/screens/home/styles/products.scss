@@ -45,12 +45,16 @@ $btn-height : 40px;
                 align-items: center;
                 height: $btn-height;
                 justify-content: space-evenly;
-                button{
+                span{
                     flex-grow: 1;
                     border: none;
                     text-align: center;
                     background-color: transparent;
                     cursor: pointer;
+                }
+
+                span:hover{
+                    color: green;
                 }
             }
         }
