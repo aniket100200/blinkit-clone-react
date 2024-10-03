@@ -24,7 +24,7 @@ const HomeScreen = ()=>{
     return <div className="products-list">
         {
             products.filter(p=>{
-               return p.title.toLowerCase().includes(search?.toLowerCase()) || p.description.toLowerCase().includes(search?.toLowerCase());
+               return p.title.toLowerCase().includes(search?.toLowerCase().trim()) || p.description.toLowerCase().includes(search?.toLowerCase());
             }).map(product=> <Product key={product?.id} data={product}/>)
         }
     </div>
